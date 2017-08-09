@@ -1,0 +1,28 @@
+访问修饰符：
+private：触自身类可以访问外都不能访问
+default：同包子类可以继承，不同包子类不能继承，同包类可以访问，不同包类不能访问
+protect：同包子类可以继承，不同包子类也可以继承，同包类可以访问，不同包类不能访问
+public：所有的都可以访问和继承
+
+collection：
+	list：
+		ArrayList：不同步，容量可变，动态数组
+		LinkList：不同步，动态链表
+		vector：同步
+			stack
+	set：
+		TreeSet：不予许有相同元素
+map：
+	HashMap：同步，实现一个key-value 映射的哈希表
+	TreeMap：不同步
+	WeakHashMap：hashmap的改进，实现"弱引用",如果一个key不被引用，则被GC收回 
+	
+equals() 和 ==的区别
+equals: 属于object类里的方法 比较两个值是否相等
+ == : 不属于object里的方法，判断两个引用是否指向同一个对象
+ object提供的方法还有：hashcode，wait，notify，notifyAll,getclass
+ 
+抽象类和接口的区别：
+1.抽象类是一个类，只能够继承一个，接口是接口，可以实现多个。
+2.抽象类是类，可以使用public protect default private 修饰符，final，static修饰符
+  接口中的方法只能是public static final 修饰符修饰
