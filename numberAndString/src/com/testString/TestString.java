@@ -1,8 +1,43 @@
-package com.testInteger;
+package com.testString;
 
 import java.util.Scanner;
 
 public class TestString {
+	
+	//比较字符串
+	public static void compareString(){
+//		String s1 = "the light";
+//		String s2 = new String("the light");
+//		if (s1==(s2)) {
+//			System.out.println("is equal");
+//		}else {
+//			System.out.println("is not equal");
+//		}
+		String[] ss = getStringArray(100, 2);
+		String[] es = new String [ss.length];
+		int count = 0;
+		for (int i = 0; i < ss.length; i++) {
+			
+			System.out.print(ss[i]+"\t");
+			if ((i+1)%10 ==0 ) {
+				System.out.println();
+			}
+			for (int j = i+1; j < ss.length; j++) {
+				if (ss[i].equals(ss[j])) {
+					count++;
+					es[i] = ss[i];
+				}
+			}
+			
+		}
+		System.out.println("总共有"+count+"种重复字段");
+		System.out.println("分别是：");
+		for (int i = 0; i < es.length; i++) {
+			if (es[i] != null) {
+				System.out.print(es[i]+"\t");
+			}
+		}
+	}
 	
 	public static void changeToUpper(String s){
 		String[] word = s.split(" ");
@@ -34,42 +69,47 @@ public class TestString {
 		}
 		System.out.println("有"+count+"个以p开头的词");
 	}
-	
+	//大小写相间 
 	public static void upperBetweenLower(String s){
 		char [] cs = s.toCharArray();
 		
 		for (int i = 0; i < cs.length; i++) {
-			
+			if (i == 0 || i % 2 ==0) {
+				cs[i] = Character.toUpperCase(cs[i]);
+			}
 		}
-		
+		String string = new String(cs);
+		System.out.println("转换后："+string);
 	}
 
-	public static char[] getCharArray(){
-		char [] cs = new char[5];
+	public static char[] getCharArray(int lengh){
+		char [] cs = new char[lengh];
+		int index = 0;
+		String pool = "qwertyuioplkjhgfdsazxcvbnmZXCVBNMKLJHGFDSAQWERTYUIOP123546987";
 		for (int i = 0; i < cs.length; i++) {
-			short ran = (short) (Math.random()*100+48);
-			if (Character.isDigit(ran)|| Character.isUpperCase(ran) || Character.isLowerCase(ran)) {
-				cs[i] = (char) ran;
-				System.out.println(cs[i]);
-			}
-			
+			index = (int) (Math.random() * pool.length());
+			cs[i] = pool.charAt(index);
 		}
 		return cs;
 	}
 	
-	public static String[] getStringArray(){
+	public static String[] getStringArray(int slenth,int clenth){
 		
-		String[] ss = new String [8];
+		String[] ss = new String [slenth];
 		for (int i = 0; i < ss.length; i++) {
-			char [] cs = getCharArray();
-			String s = new String(cs);
-			ss[i] = s;
+			ss[i] = new String(getCharArray(clenth));
+			
 		}
 		
 		return ss;
 	}
 	
 	public static void main(String[] args) {
+		
+		compareString();
+		
+//		String s = "lengendary";
+//		upperBetweenLower(s);
 		
 //		String s = "a";
 		//String c = 'a';
@@ -125,9 +165,9 @@ public class TestString {
 //		System.out.println(st.replaceFirst(",", "."));
 //		System.out.println(st.replace(",", "."));
 		
-		String word = "let there be light";
-		changeToUpper(word);
-		String word1 = "peter piper picked a peck of pickled peppers";
-		testContain(word1);
+//		String word = "let there be light";
+//		changeToUpper(word);
+//		String word1 = "peter piper picked a peck of pickled peppers";
+//		testContain(word1);
 	}
 }

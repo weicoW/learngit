@@ -11,7 +11,7 @@ public class TestPrime {
 				count++;
 			}
 
-		}
+		}  
 		System.out.println("有" + count + "个质数");
 	}
 
