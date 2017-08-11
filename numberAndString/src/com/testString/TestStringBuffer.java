@@ -47,10 +47,22 @@ public class TestStringBuffer {
 		String temp = new String(TestString.getCharArray(10));
 		long time1 = System.currentTimeMillis();
 		for (int i = 0; i < 1000000; i++) {
-			msb.append(temp);
+			try {
+				msb.append(temp);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		long time2 = System.currentTimeMillis();
 		System.out.println("使用myStringBuffer的方式，连接1000000次，耗时"+(time2-time1)+"毫秒");
+		
+		try {
+			msb.delete(-2);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
 }

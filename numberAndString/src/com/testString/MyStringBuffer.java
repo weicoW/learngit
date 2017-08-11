@@ -2,6 +2,9 @@ package com.testString;
 
 import java.lang.Thread.State;
 
+import com.exception.IndexIsNagetiveException;
+import com.exception.IndexIsOutofRangeException;
+
 public class MyStringBuffer implements IStringBuffer{
 	
 	int capacity = 16;
@@ -26,34 +29,34 @@ public class MyStringBuffer implements IStringBuffer{
 	}
 
 	@Override
-	public void append(String str) {
+	public void append(String str) throws Throwable {
 		insert(length, str);
 		
 	}
 
 	@Override
-	public void append(char c) {
+	public void append(char c) throws Throwable {
 		append(String.valueOf(c));
 		
 	}
 
 	@Override
-	public void insert(int pos, char b) {
+	public void insert(int pos, char b) throws Throwable {
 		insert(pos, String.valueOf(b));
 		
 	}
 
 	@Override
-	public void insert(int pos, String b) {
+	public void insert(int pos, String b) throws Throwable {
 		// 判断插入位置是否合法
 		if (pos < 0) {
-			return;
+			throw new IndexIsNagetiveException("下标为负");
 		}
 		if (pos > length) {
-			return;
+			throw new IndexIsOutofRangeException("下边超出范围");
 		}
 		if (null == b) {
-			return;
+			throw new NullPointerException();
 		}
 		while (length + b.length() > capacity) {
 			capacity = (int) ((length + b.length()) * 1.5f);
@@ -80,23 +83,23 @@ public class MyStringBuffer implements IStringBuffer{
 	}
 
 	@Override
-	public void delete(int start) {
+	public void delete(int start) throws Throwable {
 		if (start < 0) {
-			return;
+			throw new IndexIsNagetiveException("下标为负");
 		}
 		delete(start,length);
 	}
 
 	@Override
-	public void delete(int start, int end) {
+	public void delete(int start, int end) throws Throwable {
 		if (start < 0) {
-			return;
+			throw new IndexIsNagetiveException("下标为负");
 		}
 		if (end > length) {
 			end = length;
 		}
-		if (start > end) {
-			return;
+		if (start >= end) {
+			throw new IndexOutOfBoundsException("下标超出范围");
 		}
 		int len = end - start;
 		if (len > 0) {
