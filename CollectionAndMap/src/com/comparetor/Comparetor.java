@@ -1,12 +1,16 @@
 package com.comparetor;
 
+import java.nio.file.DirectoryStream.Filter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.TreeSet;
 
+import org.omg.CORBA.OMGVMCID;
+
 import com.hero.Item;
+import com.hero.ItemChecker;
 
 public class Comparetor {
 
@@ -48,11 +52,28 @@ public class Comparetor {
 			System.out.print(item.price+"\t");
 		}
 		System.out.println();
+		//排序
 		Collections.sort(items);
 		System.out.println("排序后");
 		for (Item item : items) {
 			System.out.print(item.price+"\t");
 		}
+		System.out.println();
+		//使用lambda表达式排序
+		System.out.println("使用lambda表达式排序");
+		Collections.sort(items,(i1,i2)->i1.price <= i2.price?1:-1);
+		for (Item item : items) {
+			System.out.print(item.price+"\t");
+		}
+		System.out.println("引用静态方法方式");
+		Collections.sort(items,(i1,i2)->Comparetor.SortRule(i1, i2)?1:-1);
+		System.out.println("引用容器中的对象的方法");
+		Collections.sort(items,(i1,i2)->i1.compareTo(i2));
+		
+	}
+
+	public static boolean SortRule(Item item1,Item item2){
+		return item1.price <= item2.price;
 	}
 	
 	

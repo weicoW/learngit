@@ -11,6 +11,8 @@ public class Hero implements LOL{
 	}
 	public Hero(String name){
 		this.name = name;
+		this.hp = hp;
+		this.damage = damage;
 	}
 	//÷ÿ–¥toString
 	public String toString(){

@@ -17,4 +17,5 @@ public class Item implements LOL,Comparable<Item>{
 		this.price = price;
 	
 	}
+	
 }

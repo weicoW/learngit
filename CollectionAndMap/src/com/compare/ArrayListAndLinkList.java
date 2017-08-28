@@ -22,18 +22,19 @@ public class ArrayListAndLinkList {
 //		list = new LinkedList<>();
 //		insertLast(list, "LinkList");
 		//比较中间插入数据
-		list = new ArrayList<>();
-		insertMin(list, "ArrayList",20000);
-		list = new LinkedList<>();
-		insertMin(list, "LinkList", 20000);
+		//引用构造器初始化list
+		insertMin(ArrayList::new, "ArrayList",20000);
+		
+		insertMin(LinkedList::new, "LinkList", 20000);
 		
 	}
 	//在中间
-	private static void insertMin(List<Integer> list, String type,int index) {
+	private static void insertMin(Supplier<List> s, String type,int index) {
 
 		int total = 100*1000;
 		final int number = 5;
 		//初始化数组
+		List<Integer> list = s.get();
 		for (int i = 0; i < total; i++) {
 			list.add(number);
 		}
