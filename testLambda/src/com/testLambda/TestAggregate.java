@@ -23,7 +23,9 @@ public class TestAggregate {
 	private static void aggregateSearch(ArrayList<Hero> heros, int i) {
 		System.out.println("hp第三");
 		heros.stream().sorted((h1,h2)->h1.hp <= h2.hp ? 1:-1).limit(i).skip(i-1).forEach(h->System.out.println(h));
-		
+		System.out.println("damage最小");
+		Hero minHero = heros.stream().min((h1,h2)->h1.damage - h2.damage).get();
+		System.out.println(minHero);
 	}
 
 	private static void Search(ArrayList<Hero> heros, int i) {
