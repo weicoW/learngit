@@ -25,8 +25,8 @@ public class IntegratedPractise{
 		
 		//copyFile(srcFile,destFile);
 		//copyFolder(scrFolderPath,destFolderPath);
-		File srcFile = new File("E:/project");
-		String search = "Magic";
+		File srcFile = new File("D:/test/stream");
+		String search = "name";
 		search(srcFile,search);
 	}
 
@@ -50,7 +50,7 @@ public class IntegratedPractise{
 					reader.read(data);
 					String s = new String(data);
 					if (s.contains(search)) {
-						System.out.println("找到子目标字符串Magic，在文件:"+file.getAbsolutePath());
+						System.out.println("找到子目标字符串" + search + "，在文件:" + file.getAbsolutePath());
 					}
 					
 				} catch (IOException e) {
